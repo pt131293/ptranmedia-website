@@ -1,9 +1,6 @@
 [build]
-  # Directory to publish (relative to root of your repo)
-  publish = "dist"
-  
-  # Default build command
-  command = "npm run build"
+  # Directory where your HTML files are (root directory)
+  publish = "."
 
 [[redirects]]
   from = "/*"
