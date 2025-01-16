@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PtranMedia - Marketing Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="loader">
+        <div class="loader-content">
+            <img src="ptranmedia-logo.png" alt="Loading...">
+        </div>
+    </div>
+    <div class="page-wrapper">
+        <header class="site-header">
+            <div class="logo-container">
+                <a href="/" class="logo">
+                    <img src="ptranmedia-logo.png" alt="PtranMedia Logo">
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-content">
+                    <h1 class="reveal-text">More Growth. More Turnover. More Clients</h1>
+                    <h2 class="reveal-text">Guaranteed.</h2>
+                    <button class="cta-button" onclick="scrollToContact()">
+                        YES, I WANT THAT! 
+                        <span class="button-icon">
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="marketing-intro reveal">
+                <h4>Marketing is important...</h4>
+                <p>...but there are already 101 things on your to-do list.</p>
+                <p>And they are all important too!</p>
+            </section>
+
+            <section class="optimization reveal">
+                <h3>So How Do You Optimize Your Marketing?</h3>
+                
+                <div class="options-grid">
+                    <div class="option">
+                        <i class="fas fa-user-tie icon"></i>
+                        <h6>HANDLE EVERYTHING YOURSELF?</h6>
+                        <p>That's fine if you have very little on your plate.</p>
+                        <p>But if you're pretty busy already... this isn't a viable option</p>
+                    </div>
+
+                    <div class="option">
+                        <i class="fas fa-users icon"></i>
+                        <h6>NEW STAFF?</h6>
+                        <p>Finding good people isn't easy.</p>
+                        <p>Training and onboarding staff is costly.</p>
+                        <p>And even if you do find the perfect man or woman for the position... you're still depending on one person!</p>
+                    </div>
+
+                    <div class="option">
+                        <i class="fas fa-building icon"></i>
+                        <h6>HIRE AN AGENCY?</h6>
+                        <p>Don't have a marketing budget of tens of thousands of dollars? Then you might end up having your account managed by the intern of the assistant's assistant. Not exactly optimal.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="difference reveal">
+                <h2>"OK... So What Makes You So Different?"</h2>
+                
+                <div class="features-grid">
+                    <div class="feature">
+                        <i class="fas fa-chart-line icon"></i>
+                        <h6>RESULTS</h6>
+                        <p>Our first priority is to get you results.</p>
+                        <p>Less talk, more work.</p>
+                    </div>
+
+                    <div class="feature">
+                        <i class="fas fa-map-marker-alt icon"></i>
+                        <h6>LOCAL</h6>
+                        <p>We're not tucked away in some anonymous office.</p>
+                        <p>We're a local company, so you'll be able to reach us when you need us.</p>
+                    </div>
+
+                    <div class="feature">
+                        <i class="fas fa-star icon"></i>
+                        <h6>SPECIALIZED</h6>
+                        <p>Jack of all trades... master of none. Specialization works.</p>
+                        <p>That's why we work with industries we know, so we can guarantee results.</p>
+                    </div>
+
+                    <div class="feature">
+                        <i class="fas fa-shield-alt icon"></i>
+                        <h6>GUARANTEED</h6>
+                        <p>We only win if you win. That's the basis for a good partnership.</p>
+                        <p>You won't carry all the risk, we'll share it.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="contact reveal">
+                <div class="contact-content">
+                    <h1>Contact Us For A</h1>
+                    <h1>Free Marketing Consult</h1>
+                    
+                    <form class="contact-form" name="contact" method="POST" data-netlify="true">
+                        <input type="hidden" name="form-name" value="contact">
+                        
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Last name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email*" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="Phone">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="What is your most important question?*" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">
+                            Send 
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <p>© 2024 by PtranMedia.</p>
+                <nav>
+                    <a href="/" class="nav-link">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </nav>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Add this function to handle the scroll
+        function scrollToContact() {
+            document.getElementById('contact').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Loader functionality
+        window.addEventListener('load', function() {
+            const loader = document.querySelector('.loader');
+            loader.classList.add('hidden');
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        });
+
+        // Existing scroll reveal functionality
+        const reveals = document.querySelectorAll('.reveal');
+        
+        function reveal() {
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+        reveal();
+
+        // Scroll to top functionality
+        const scrollBtn = document.getElementById('scrollToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+    <button id="scrollToTop" class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</body>
+</html> 
