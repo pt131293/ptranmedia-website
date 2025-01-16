@@ -5,4 +5,11 @@
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200 
+  status = 200
+
+[build.processing.html]
+  pretty_urls = true
+
+[forms]
+  # Specify maximum form submissions per month if needed
+  # max_submissions = 100 

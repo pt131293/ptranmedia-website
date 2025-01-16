@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Add Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .submit-button {
+            transition: all 0.3s ease;
+        }
+    </style>
 </head>
 <body>
     <div class="loader">
@@ -111,11 +116,11 @@
                     <h1>Contact Us For A</h1>
                     <h1>Free Marketing Consult</h1>
                     
-                    <form class="contact-form" name="contact" method="POST" data-netlify="true">
+                    <form id="contact-form" class="contact-form" name="contact" method="POST" data-netlify="true" onsubmit="return false;">
                         <input type="hidden" name="form-name" value="contact">
                         
                         <div class="form-group">
-                            <input type="text" name="name" placeholder="Last name">
+                            <input type="text" name="name" placeholder="Name">
                         </div>
                         <div class="form-group">
                             <input type="email" name="email" placeholder="Email*" required>
@@ -124,8 +129,13 @@
                             <input type="tel" name="phone" placeholder="Phone">
                         </div>
                         <div class="form-group">
-                            <textarea name="message" placeholder="What is your most important question?*" required></textarea>
+                            <textarea name="message" placeholder="Tell me more about your business need (I want more clients, I need help with marketing, etc...)*" required></textarea>
                         </div>
+                        
+                        <p id="success-message" style="display: none; text-align: center; margin: 20px 0; color: #4CAF50; font-weight: 500; padding: 15px; background-color: #f8fff8; border-radius: 4px; border: 1px solid #4CAF50;">
+                            Congratulations! Your business is about to take off very soon! We will contact you shortly.
+                        </p>
+                        
                         <button type="submit" class="submit-button">
                             Send 
                             <i class="fas fa-paper-plane"></i>
@@ -163,6 +173,51 @@
             setTimeout(() => {
                 loader.style.display = 'none';
             }, 500);
+
+            // Form handling
+            const form = document.getElementById('contact-form');
+            const successMessage = document.getElementById('success-message');
+            
+            if (form && successMessage) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get the submit button
+                    const submitButton = this.querySelector('.submit-button');
+                    
+                    // Add visual feedback for the button
+                    submitButton.style.transform = 'scale(0.95)';
+                    submitButton.style.backgroundColor = '#45a049';
+                    
+                    // Make the message visible
+                    successMessage.style.display = 'block';
+                    successMessage.style.animation = 'fadeIn 0.5s';
+                    
+                    // Clear the form
+                    this.reset();
+                    
+                    // Reset button after animation
+                    setTimeout(() => {
+                        submitButton.style.transform = '';
+                        submitButton.style.backgroundColor = '';
+                    }, 500);
+                    
+                    // Hide the message after 15 seconds
+                    setTimeout(function() {
+                        successMessage.style.animation = 'fadeOut 0.5s';
+                        successMessage.style.display = 'none';
+                    }, 15000);
+                    
+                    // Handle the Netlify submission
+                    const formData = new FormData(this);
+                    fetch('/', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    return false;
+                });
+            }
         });
 
         // Existing scroll reveal functionality
