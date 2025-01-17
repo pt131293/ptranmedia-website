@@ -122,7 +122,7 @@
                     <h1>Free Marketing Consult</h1>
 
                     <form id="contact-form" class="contact-form" name="contact" method="POST" data-netlify="true"
-                        netlify>
+                        action="/success">
                         <input type="hidden" name="form-name" value="contact">
                         <p class="hidden" style="display: none;">
                             <label>Don't fill this out if you're human: <input name="bot-field" /></label>
@@ -191,57 +191,9 @@
             const successMessage = document.getElementById('success-message');
 
             if (form && successMessage) {
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    // Get the submit button
+                form.addEventListener('submit', function () {
                     const submitButton = this.querySelector('.submit-button');
-
-                    // Add visual feedback for the button
-                    submitButton.style.transform = 'scale(0.95)';
-                    submitButton.style.backgroundColor = '#45a049';
                     submitButton.innerHTML = 'Sending...';
-
-                    // Create FormData object
-                    const formData = new FormData(this);
-
-                    // Submit the form to Netlify
-                    fetch('https://ptranmedia.com/', {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            "Accept": "application/json",
-                        }
-                    })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok');
-                            }
-                            // Show success message
-                            successMessage.style.display = 'block';
-                            successMessage.style.animation = 'fadeIn 0.5s';
-
-                            // Clear the form
-                            form.reset();
-
-                            // Reset button
-                            submitButton.style.transform = '';
-                            submitButton.style.backgroundColor = '';
-                            submitButton.innerHTML = 'Send <i class="fas fa-paper-plane"></i>';
-
-                            // Hide success message after 15 seconds
-                            setTimeout(() => {
-                                successMessage.style.animation = 'fadeOut 0.5s';
-                                setTimeout(() => {
-                                    successMessage.style.display = 'none';
-                                }, 500);
-                            }, 15000);
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            submitButton.innerHTML = 'Send <i class="fas fa-paper-plane"></i>';
-                            alert('There was a problem submitting your form. Please try again.');
-                        });
                 });
             }
         });
