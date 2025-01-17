@@ -121,8 +121,12 @@
                     <h1>Contact Us For A</h1>
                     <h1>Free Marketing Consult</h1>
 
-                    <form id="contact-form" class="contact-form" name="contact" method="POST" data-netlify="true">
+                    <form id="contact-form" class="contact-form" name="contact" method="POST" data-netlify="true"
+                        netlify>
                         <input type="hidden" name="form-name" value="contact">
+                        <p class="hidden" style="display: none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                        </p>
 
                         <div class="form-group">
                             <input type="text" name="name" placeholder="Name">
@@ -202,13 +206,12 @@
                     const formData = new FormData(this);
 
                     // Submit the form to Netlify
-                    fetch(window.location.origin + '/', {
+                    fetch('https://ptranmedia.com/', {
                         method: 'POST',
+                        body: formData,
                         headers: {
-                            "Content-Type": "application/x-www-form-urlencoded",
-                            "Accept": "application/json"
-                        },
-                        body: new URLSearchParams(formData).toString()
+                            "Accept": "application/json",
+                        }
                     })
                         .then(response => {
                             if (!response.ok) {
