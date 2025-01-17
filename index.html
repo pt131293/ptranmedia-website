@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,15 @@
     <!-- Add Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Add Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         .submit-button {
             transition: all 0.3s ease;
         }
     </style>
 </head>
+
 <body>
     <div class="loader">
         <div class="loader-content">
@@ -36,7 +39,7 @@
                     <h1 class="reveal-text">More Growth. More Turnover. More Clients</h1>
                     <h2 class="reveal-text">Guaranteed.</h2>
                     <button class="cta-button" onclick="scrollToContact()">
-                        YES, I WANT THAT! 
+                        YES, I WANT THAT!
                         <span class="button-icon">
                             <i class="fas fa-arrow-right"></i>
                         </span>
@@ -52,7 +55,7 @@
 
             <section class="optimization reveal">
                 <h3>So How Do You Optimize Your Marketing?</h3>
-                
+
                 <div class="options-grid">
                     <div class="option">
                         <i class="fas fa-user-tie icon"></i>
@@ -66,20 +69,22 @@
                         <h6>NEW STAFF?</h6>
                         <p>Finding good people isn't easy.</p>
                         <p>Training and onboarding staff is costly.</p>
-                        <p>And even if you do find the perfect man or woman for the position... you're still depending on one person!</p>
+                        <p>And even if you do find the perfect man or woman for the position... you're still depending
+                            on one person!</p>
                     </div>
 
                     <div class="option">
                         <i class="fas fa-building icon"></i>
                         <h6>HIRE AN AGENCY?</h6>
-                        <p>Don't have a marketing budget of tens of thousands of dollars? Then you might end up having your account managed by the intern of the assistant's assistant. Not exactly optimal.</p>
+                        <p>Don't have a marketing budget of tens of thousands of dollars? Then you might end up having
+                            your account managed by the intern of the assistant's assistant. Not exactly optimal.</p>
                     </div>
                 </div>
             </section>
 
             <section class="difference reveal">
                 <h2>"OK... So What Makes You So Different?"</h2>
-                
+
                 <div class="features-grid">
                     <div class="feature">
                         <i class="fas fa-chart-line icon"></i>
@@ -115,10 +120,10 @@
                 <div class="contact-content">
                     <h1>Contact Us For A</h1>
                     <h1>Free Marketing Consult</h1>
-                    
-                    <form id="contact-form" class="contact-form" name="contact" method="POST" data-netlify="true" onsubmit="return false;">
+
+                    <form id="contact-form" class="contact-form" name="contact" method="POST" data-netlify="true">
                         <input type="hidden" name="form-name" value="contact">
-                        
+
                         <div class="form-group">
                             <input type="text" name="name" placeholder="Name">
                         </div>
@@ -129,15 +134,18 @@
                             <input type="tel" name="phone" placeholder="Phone">
                         </div>
                         <div class="form-group">
-                            <textarea name="message" placeholder="Tell me more about your business need (I want more clients, I need help with marketing, etc...)*" required></textarea>
+                            <textarea name="message"
+                                placeholder="Tell me more about your business need (I want more clients, I need help with marketing, etc...)*"
+                                required></textarea>
                         </div>
-                        
-                        <p id="success-message" style="display: none; text-align: center; margin: 20px 0; color: #4CAF50; font-weight: 500; padding: 15px; background-color: #f8fff8; border-radius: 4px; border: 1px solid #4CAF50;">
+
+                        <p id="success-message"
+                            style="display: none; text-align: center; margin: 20px 0; color: #4CAF50; font-weight: 500; padding: 15px; background-color: #f8fff8; border-radius: 4px; border: 1px solid #4CAF50;">
                             Congratulations! Your business is about to take off very soon! We will contact you shortly.
                         </p>
-                        
+
                         <button type="submit" class="submit-button">
-                            Send 
+                            Send
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
@@ -160,14 +168,14 @@
     <script>
         // Add this function to handle the scroll
         function scrollToContact() {
-            document.getElementById('contact').scrollIntoView({ 
+            document.getElementById('contact').scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
         }
 
         // Loader functionality
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             const loader = document.querySelector('.loader');
             loader.classList.add('hidden');
             setTimeout(() => {
@@ -177,52 +185,67 @@
             // Form handling
             const form = document.getElementById('contact-form');
             const successMessage = document.getElementById('success-message');
-            
+
             if (form && successMessage) {
-                form.addEventListener('submit', function(e) {
+                form.addEventListener('submit', function (e) {
                     e.preventDefault();
-                    
+
                     // Get the submit button
                     const submitButton = this.querySelector('.submit-button');
-                    
+
                     // Add visual feedback for the button
                     submitButton.style.transform = 'scale(0.95)';
                     submitButton.style.backgroundColor = '#45a049';
-                    
-                    // Make the message visible
-                    successMessage.style.display = 'block';
-                    successMessage.style.animation = 'fadeIn 0.5s';
-                    
-                    // Clear the form
-                    this.reset();
-                    
-                    // Reset button after animation
-                    setTimeout(() => {
-                        submitButton.style.transform = '';
-                        submitButton.style.backgroundColor = '';
-                    }, 500);
-                    
-                    // Hide the message after 15 seconds
-                    setTimeout(function() {
-                        successMessage.style.animation = 'fadeOut 0.5s';
-                        successMessage.style.display = 'none';
-                    }, 15000);
-                    
-                    // Handle the Netlify submission
+                    submitButton.innerHTML = 'Sending...';
+
+                    // Create FormData object
                     const formData = new FormData(this);
-                    fetch('/', {
+
+                    // Submit the form to Netlify
+                    fetch(window.location.origin + '/', {
                         method: 'POST',
-                        body: formData
-                    });
-                    
-                    return false;
+                        headers: { 
+                            "Content-Type": "application/x-www-form-urlencoded",
+                            "Accept": "application/json"
+                        },
+                        body: new URLSearchParams(formData).toString()
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            // Show success message
+                            successMessage.style.display = 'block';
+                            successMessage.style.animation = 'fadeIn 0.5s';
+
+                            // Clear the form
+                            form.reset();
+
+                            // Reset button
+                            submitButton.style.transform = '';
+                            submitButton.style.backgroundColor = '';
+                            submitButton.innerHTML = 'Send <i class="fas fa-paper-plane"></i>';
+
+                            // Hide success message after 15 seconds
+                            setTimeout(() => {
+                                successMessage.style.animation = 'fadeOut 0.5s';
+                                setTimeout(() => {
+                                    successMessage.style.display = 'none';
+                                }, 500);
+                            }, 15000);
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            submitButton.innerHTML = 'Send <i class="fas fa-paper-plane"></i>';
+                            alert('There was a problem submitting your form. Please try again.');
+                        });
                 });
             }
         });
 
         // Existing scroll reveal functionality
         const reveals = document.querySelectorAll('.reveal');
-        
+
         function reveal() {
             reveals.forEach(element => {
                 const windowHeight = window.innerHeight;
@@ -260,4 +283,5 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 </body>
-</html> 
+
+</html>
