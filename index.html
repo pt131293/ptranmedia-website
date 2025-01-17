@@ -121,12 +121,8 @@
                     <h1>Contact Us For A</h1>
                     <h1>Free Marketing Consult</h1>
 
-                    <form id="contact-form" class="contact-form" name="contact" method="POST" data-netlify="true"
-                        action="/success">
+                    <form name="contact" method="POST" data-netlify="true" class="contact-form">
                         <input type="hidden" name="form-name" value="contact">
-                        <p class="hidden" style="display: none;">
-                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-                        </p>
 
                         <div class="form-group">
                             <input type="text" name="name" placeholder="Name">
@@ -185,17 +181,6 @@
             setTimeout(() => {
                 loader.style.display = 'none';
             }, 500);
-
-            // Form handling
-            const form = document.getElementById('contact-form');
-            const successMessage = document.getElementById('success-message');
-
-            if (form && successMessage) {
-                form.addEventListener('submit', function () {
-                    const submitButton = this.querySelector('.submit-button');
-                    submitButton.innerHTML = 'Sending...';
-                });
-            }
         });
 
         // Existing scroll reveal functionality
